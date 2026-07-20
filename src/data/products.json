@@ -1,0 +1,38 @@
+[
+    {
+        "id":1,
+        "name":"Laptop",
+        "price":999.99,
+        "category":"electronics",
+        "stocks":15
+    },
+    {
+        "id":2,
+        "name":"Phone",
+        "price":499.99,
+        "category":"electronics",
+        "stocks":30
+    },
+    {
+        "id":3,
+        "name":"Headphones",
+        "price":149.99,
+        "category":"electronics",
+        "stocks":50
+    },
+    {
+        "id":4,
+        "name":"T-Shirt",
+        "price":19.99,
+        "category":"clothing",
+        "stocks":100
+    },
+    {
+        "id":5,
+        "name":"Running Shoes",
+        "price":89.99,
+        "category":"clothing",
+        "stocks":45
+    }
+    
+]
