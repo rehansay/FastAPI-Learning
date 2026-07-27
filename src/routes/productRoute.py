@@ -20,6 +20,7 @@ def getAllProducts(product_id:int=None):
 
 
 
+
 @productRoutes.get("/{id}")
 def getOneProducts(id:int):
 
