@@ -21,6 +21,7 @@ def getAllProducts(product_id:int=None):
 
 
 
+
 @productRoutes.get("/{id}")
 def getOneProducts(id:int):
 
@@ -30,6 +31,7 @@ def getOneProducts(id:int):
             return product
     return HTTPException(status_code=400,
                          detail={"error:Product not found for this ID."})
+
 
 
 

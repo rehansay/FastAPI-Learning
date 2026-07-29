@@ -1,4 +1,5 @@
 [
+    
     {
         "id":1,
         "name":"Laptop",
@@ -6,6 +7,7 @@
         "category":"electronics",
         "stocks":15
     },
+
     {
         "id":2,
         "name":"Phone",
@@ -13,6 +15,7 @@
         "category":"electronics",
         "stocks":30
     },
+
     {
         "id":3,
         "name":"Headphones",
@@ -20,6 +23,7 @@
         "category":"electronics",
         "stocks":50
     },
+
     {
         "id":4,
         "name":"T-Shirt",
@@ -27,6 +31,7 @@
         "category":"clothing",
         "stocks":100
     },
+
     {
         "id":5,
         "name":"Running Shoes",
