@@ -38,6 +38,13 @@
         "price":89.99,
         "category":"clothing",
         "stocks":45
+    },
+    {
+        "id":6,
+        "name":"Sneakers",
+        "price":99.99,
+        "category":"clothing",
+        "stocks":35
     }
     
 ]
