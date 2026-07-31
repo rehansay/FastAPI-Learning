@@ -1,5 +1,8 @@
 from fastapi import APIRouter , HTTPException
-from src.utils.utils import get_all_products
+from src.utils.utils import get_all_products, create_product
+
+from src.dtos.productSchema import CreateProduct
+
 
 productRoutes=APIRouter()
 
@@ -36,5 +39,18 @@ def getOneProducts(id:int):
 
 
 @productRoutes.post("/create")
-def createNewProducts():
-    return[] 
+def createNewProducts(product:CreateProduct):
+    products=get_all_products()
+
+    product=product.model_dump()
+    
+    next_id=max([p["id"] for p in products])+1
+    product["id"]=next_id
+
+    print(product)
+
+    products.append(product)
+
+    create_product(products)
+
+    return {"message":"New Product Created Successfully"}
