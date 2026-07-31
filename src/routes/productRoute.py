@@ -45,6 +45,7 @@ def createNewProducts(product:CreateProduct):
     product=product.model_dump()
     
     next_id=max([p["id"] for p in products])+1
+    
     product["id"]=next_id
 
     print(product)
