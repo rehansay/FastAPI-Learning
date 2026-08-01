@@ -1,7 +1,6 @@
 from fastapi import APIRouter , HTTPException
-from src.utils.utils import get_all_products, create_product
-
-from src.dtos.productSchema import CreateProduct, UpdateProduct
+from src.utils.utils import get_all_products, create_product, simple_send
+from src.dtos.productSchema import CreateProduct, UpdateProduct, OrderSchema
 
 
 productRoutes=APIRouter()
@@ -97,3 +96,33 @@ def deleteProduct(id:int=None):
     
 
     return HTTPException(status_code=400, detail={"error":"Product ID Not Found"})
+
+
+@productRoutes.post("/order")
+async def placeOrder(orderDetails:OrderSchema):
+    count=orderDetails.count
+    product_id=orderDetails.product_id
+    email=orderDetails.email
+
+    print(product_id, orderDetails)
+
+    oneProduct=None
+    allProducts=get_all_products()
+    for index, p in enumerate(allProducts):
+        if p["id"]== product_id:
+            oneProduct=p
+            break
+
+    if not oneProduct:
+        return HTTPException(status_code=400, detail={"error":"Product ID Not Found"})
+   
+
+    if oneProduct["stocks"] < count:
+        return HTTPException(status_code=400, detail={"error":"Product Out of Stock"})
+
+
+    await simple_send(email)
+
+    return {"message":"Order Placed Successfully"}
+
+

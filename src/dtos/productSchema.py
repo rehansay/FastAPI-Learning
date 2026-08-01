@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 
 class CreateProduct(BaseModel):
     name:str
@@ -13,3 +13,8 @@ class UpdateProduct(BaseModel):
     category:str= None
     stock:int=None
 
+
+class OrderSchema(BaseModel):
+    count:int=None
+    product_id:int=None
+    email:EmailStr=None
