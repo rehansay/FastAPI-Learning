@@ -1,4 +1,4 @@
-from fastapi import APIRouter , HTTPException
+from fastapi import APIRouter , HTTPException, BackgroundTasks
 from src.utils.utils import get_all_products, create_product, simple_send
 from src.dtos.productSchema import CreateProduct, UpdateProduct, OrderSchema
 
@@ -99,7 +99,7 @@ def deleteProduct(id:int=None):
 
 
 @productRoutes.post("/order")
-async def placeOrder(orderDetails:OrderSchema):
+async def placeOrder(orderDetails:OrderSchema, bgTask:BackgroundTasks):
     count=orderDetails.count
     product_id=orderDetails.product_id
     email=orderDetails.email
@@ -121,7 +121,8 @@ async def placeOrder(orderDetails:OrderSchema):
         return HTTPException(status_code=400, detail={"error":"Product Out of Stock"})
 
 
-    await simple_send(email)
+
+    bgTask.add_task(simple_send, email)
 
     return {"message":"Order Placed Successfully"}
 

@@ -1,6 +1,12 @@
 import json
 from fastapi_mail import FastMail, MessageSchema, ConnectionConfig, MessageType
 
+def get_all_users():
+    with open("src/data/users.json", 'r') as p:
+        return json.load(p)
+
+
+
 
 file_path="src/data/products.json"
 
@@ -38,3 +44,5 @@ async def simple_send(email: str):
     
     fm=FastMail(email_conf)
     await fm.send_message(message)
+    print("Email sent Successfully")
+

@@ -18,3 +18,8 @@ class OrderSchema(BaseModel):
     count:int=None
     product_id:int=None
     email:EmailStr=None
+
+
+class UserResponse(BaseModel):
+    name:str
+    email:EmailStr
