@@ -1,5 +1,7 @@
 from dotenv import load_dotenv
 load_dotenv()
+from fastapi import FastAPI
+from langserve import add_routes
 
 from langchain_groq import ChatGroq
 from langchain.agents import create_agent
@@ -19,11 +21,21 @@ agent=create_agent(
     tools=tools,
     system_prompt=prompt
 )
+# app=FastAPI(
+#     title="My AI Agent"
+# )
 
-query="who is the winner of IPL 2026?"
+# add_routes(
+#     app,
+#     agent,
+#     path="/agent"
+# )
 
-response=agent.invoke(
-    {"messages":[{"role":"user", "content":query}]}
 
-) 
-print (response["messages"][-1].content)
+# query="who is the winner of IPL 2026?"
+
+# response=agent.invoke(
+#     {"messages":[{"role":"user", "content":query}]}
+
+# ) 
+# print (response["messages"][-1].content)
